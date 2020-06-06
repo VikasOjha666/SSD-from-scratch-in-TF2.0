@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Stop_sign</folder>
+	<filename>88.jpg</filename>
+	<path>E:\Road Sign detection Dataset\Stop_sign\88.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2448</width>
+		<height>3264</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>stop</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1788</xmin>
+			<ymin>776</ymin>
+			<xmax>2436</xmax>
+			<ymax>1452</ymax>
+		</bndbox>
+	</object>
+</annotation>
