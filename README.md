@@ -13,3 +13,5 @@ Type `python test.py --data-dir ./data/ --checkpoint-path ./checkpoints/ssd_epoc
 #### Tqdm
 #### PIL
 #### Yaml
+
+You can see the output of the model in output folder that I trained on my own dataset.
