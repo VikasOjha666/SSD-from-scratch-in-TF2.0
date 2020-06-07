@@ -31,19 +31,25 @@ def gen_default_boxes(config):
             cx=(j+0.5)/fm_size
             cy=(i+0.5)/fm_size
 
-            default_boxes.append([cx,cy,scales[m],scales[m]])
+            for sc in scales[m]:
+                default_boxes.append([cx,cy,sc,sc])
+            if m!=len(feat_map_size)-1:
+                for i in range(len(scales[m])):
+                    default_boxes.append([cx,cy,math.sqrt(scales[m][i]*scales[m+1][i]),math.sqrt(scales[m][i]*scales[m+1][i])])
+            else:
+                for i in range(len(scales[m])):
+                    default_boxes.append([cx,cy,math.sqrt(scales[m][i]*scales[m][i]),math.sqrt(scales[m][i]*scales[m][i])])
 
-            default_boxes.append([cx,cy,math.sqrt(scales[m]*scales[m+1]),
-                                math.sqrt(scales[m]*scales[m+1])])
+
             for ar in aspect_ratios[m]:
                 r=math.sqrt(ar)
-                default_boxes.append([cx,cy,scales[m]*r,scales[m]/r])
-
-                default_boxes.append([cx,cy,scales[m] / r,scales[m] * r])
+                for sc in scales[m]:
+                    default_boxes.append([cx,cy,sc*r,sc/r])
+                    default_boxes.append([cx,cy,sc/r,sc*r])
     default_boxes=tf.constant(default_boxes)
     default_boxes=tf.clip_by_value(default_boxes,0.0,1.0)
-
     return default_boxes
+
 
 
 def calc_area(top_left,bottom_right):
